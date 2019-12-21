@@ -47,14 +47,15 @@ public class NoteController {
 		Response response = noteService.createNote(email, notedto);
 		return response;
 	}
-
+	
 	
 	/**Method: To Update a Note
-	 * @param id
+	 * @param noteId
+	 * @param token
 	 * @param notedto
 	 * @return Update Note Implementation Logic
 	 */
-
+	
 	@PutMapping("/update")
 	public Response updateNote(@RequestHeader String noteId,@RequestHeader String token, @Valid @RequestBody NoteDTO notedto) {
 		
@@ -65,7 +66,8 @@ public class NoteController {
 
 	
 	/**Method: To Delete a Note
-	 * @param id
+	 * @param noteId
+	 * @param token
 	 * @return Delete Note Implementation Logic
 	 */
 	@DeleteMapping("/delete")
@@ -77,7 +79,8 @@ public class NoteController {
 
 	
 	/**Method: To Find Note by Token
-	 * @param id
+	 * @param noteId
+	 * @param token
 	 * @return Find Note By Id Implementation Logic 
 	 */
 	@GetMapping("/find")
@@ -89,7 +92,7 @@ public class NoteController {
 
 	
 	/**Method: To Archieve/Unarchieve a Note 
-	 * @param id
+	 * @param noteId
 	 * @param token
 	 * @return Archieve/Unarchieve a Note Implementation Logic
 	 */
@@ -97,6 +100,20 @@ public class NoteController {
 	public Response isArchieve(@RequestHeader String noteId, @RequestHeader String token) {
 		
 		Response response = noteService.isArchieve(noteId, token);
+		return response;
+	}
+	
+	
+	/**Method: To Set Colour to Note 
+	 * @param noteId
+	 * @param token
+	 * @param colour
+	 * @return Setting a Colour to Note Implementation Logic
+	 */
+	@PutMapping("/setcolour")
+	public Response Colour(@RequestHeader String noteId, @RequestHeader String token, @RequestHeader String colour) {
+		
+		Response response = noteService.setColor(noteId, token, colour);
 		return response;
 	}
 }

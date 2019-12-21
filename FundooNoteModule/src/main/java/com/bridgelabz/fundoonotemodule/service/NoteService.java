@@ -10,6 +10,8 @@ package com.bridgelabz.fundoonotemodule.service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,15 +43,14 @@ public class NoteService implements NoteServiceI{
 	
 	@Autowired
 	private Environment noteEnvironment;
-	
-	
+
 	/**
 	 *Method: To Create a Note for User
 	 */
 	@Cacheable(value = "CreateNote", key = "#email")
 	@Override
 	public Response createNote(String email, NoteDTO notedto) {
-		
+
 		if(email != null) {
 			Note note = mapper.map(notedto, Note.class);
 			note.setEmailId(email);
@@ -58,13 +59,14 @@ public class NoteService implements NoteServiceI{
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 			String date = now.format(formatter);
 			note.setCreateDate(date);
+			note.setSetColor("#FFFFFF");
 			noterepository.save(note);
 			
 			return new Response(200, noteEnvironment.getProperty("Create_Note"), noteEnvironment.getProperty("CREATE_NOTE"));
 		}
 		return new Response(404, noteEnvironment.getProperty("UNAUTHORIZED_USER_EXCEPTION"), null);
 	}
-
+	
 	
 	/**
 	 *Method: To Update a Note for User
@@ -151,6 +153,38 @@ public class NoteService implements NoteServiceI{
 					return new Response(200, noteEnvironment.getProperty("Archieve_Note"), note.isArchieve());
 				}else {
 					return new Response(200, noteEnvironment.getProperty("UnArchieve_Note"), note.isArchieve());
+				}
+			}
+			return new Response(404, noteEnvironment.getProperty("NOTE_ID_NOT_FOUND"), null);
+		}
+		return new Response(404, noteEnvironment.getProperty("UNAUTHORIZED_USER_EXCEPTION"), null);
+	}
+
+
+	/**
+	 *Method: To Set Colour to Note
+	 */
+	@Override
+	public Response setColor(String noteid, String token, String colour) {
+	
+		String email = jwt.getEmailId(token);
+		if(email != null) {
+			
+			Note note =  noterepository.findById(noteid).get();
+			if(note != null) {
+				
+				String pattern = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$";
+				Pattern p = Pattern.compile(pattern);
+				Matcher m = p.matcher(colour);
+				boolean isMatches = m.matches();
+				
+				if(isMatches) {
+					note.setSetColor(colour);
+					noterepository.save(note);
+					return new Response(200, noteEnvironment.getProperty("Colour_Setting"), noteEnvironment.getProperty("COLOUR_SET"));
+				}
+				else {
+					return new Response(200, noteEnvironment.getProperty("INVALID_COLOUR_CODE"), null);
 				}
 			}
 			return new Response(404, noteEnvironment.getProperty("NOTE_ID_NOT_FOUND"), null);

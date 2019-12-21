@@ -15,4 +15,6 @@ public interface NoteServiceI {
 	
 	public Response isArchieve(String noteid, String email);
 	
+	public Response setColor(String noteid, String token, String colour);
+	
 }

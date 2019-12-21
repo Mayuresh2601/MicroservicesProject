@@ -13,10 +13,9 @@ import org.springframework.cache.annotation.EnableCaching;
 @SpringBootApplication
 @EnableCaching(proxyTargetClass = true)
 public class UserModuleApplication {
-	//Labelling
+
 	public static void main(String[] args) {
 		SpringApplication.run(UserModuleApplication.class, args);
 	}
-	
 	
 }

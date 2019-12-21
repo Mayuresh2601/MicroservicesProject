@@ -77,7 +77,8 @@ public class UserService implements UserServiceI{
 			if (passwordChecker) {
 				user.setPassword(bCryptPasswordEncoder.encode(regdto.getPassword()));
 				user.setConfirmPassword(bCryptPasswordEncoder.encode(regdto.getConfirmPassword()));
-			} else {
+			} 
+			else {
 				return new Response(404, userEnvironment.getProperty("PASSWORD_NOT_MATCH"), null);
 			}
 
@@ -93,7 +94,7 @@ public class UserService implements UserServiceI{
 	/**
 	 *Method: To find User By Id in Database
 	 */
-	@Cacheable(value = "FindUser", key = "#id")
+	@Cacheable(value = "FindUser", key = "#userId")
 	@Override
 	public Response findUser(String userId) {
 	
@@ -113,7 +114,7 @@ public class UserService implements UserServiceI{
 				
 			boolean isValid = bCryptPasswordEncoder.matches(logindto.getPassword(), user.getPassword());
 			
-			if(isValid) {	
+			if(isValid) {
 				user.setValidate(true);
 				userrepository.save(user);
 				return new Response(200, userEnvironment.getProperty("Login"), userEnvironment.getProperty("USER_LOGIN_SUCCESSFUL"));
@@ -156,7 +157,7 @@ public class UserService implements UserServiceI{
 	public Response verify(String email) {
 
 		User user = userrepository.findByEmail(email);
-		System.out.println(userEnvironment.getProperty("VERIFY_USER"));
+		
 		if (email.equals(user.getEmail())) {
 			user.setValidate(true);
 			userrepository.save(user);

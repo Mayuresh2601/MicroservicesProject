@@ -15,10 +15,9 @@ import lombok.Data;
 @Data
 public class Note implements Serializable{
 	/**
-	 * Making Note Serializable
+	 * Setting Note Serializable
 	 */
 	private static final long serialVersionUID = 1L;
-	
 
 	@Id
 	private String id;
@@ -39,9 +38,11 @@ public class Note implements Serializable{
 	private String editDate;
 	
 	private boolean isArchieve;
+	
+	@Pattern(regexp="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", message = "Colour Code Format is Invalid")
+	private String setColor;
 
 //	@JsonIgnore
 //	@DBRef(lazy = true)
 //	private List<Label> labellist = new ArrayList<>();
-		
 }

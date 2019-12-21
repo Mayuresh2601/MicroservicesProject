@@ -1,7 +1,6 @@
 package com.bridgelabz.fundoonotemodule.dto;
 
 import javax.validation.constraints.NotBlank;
-
 import lombok.Data;
 
 @Data
