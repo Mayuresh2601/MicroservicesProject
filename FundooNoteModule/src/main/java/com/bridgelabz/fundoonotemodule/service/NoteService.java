@@ -20,9 +20,12 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.bridgelabz.fundoonotemodule.dto.NoteDTO;
 import com.bridgelabz.fundoonotemodule.model.Note;
+import com.bridgelabz.fundoonotemodule.model.User;
 import com.bridgelabz.fundoonotemodule.repository.NoteRepositoryI;
 import com.bridgelabz.fundoonotemodule.response.Response;
 import com.bridgelabz.fundoonotemodule.utility.Jwt;
@@ -43,6 +46,12 @@ public class NoteService implements NoteServiceI{
 	
 	@Autowired
 	private Environment noteEnvironment;
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Autowired
+	private WebClient.Builder webClient;
 
 	/**
 	 *Method: To Create a Note for User
@@ -59,7 +68,7 @@ public class NoteService implements NoteServiceI{
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 			String date = now.format(formatter);
 			note.setCreateDate(date);
-			note.setSetColor("#FFFFFF");
+			note.setColor("#FFFFFF");
 			noterepository.save(note);
 			
 			return new Response(200, noteEnvironment.getProperty("Create_Note"), noteEnvironment.getProperty("CREATE_NOTE"));
@@ -120,14 +129,18 @@ public class NoteService implements NoteServiceI{
 	 */
 	@Cacheable(value = "FindNote", key = "#noteid")
 	@Override
-	public Response findNoteById(String noteid, String token) {
+	public Response findUserNote(String token) {
 		
 		String email = jwt.getEmailId(token);
 		
 		if(email != null) {
-			Note note =  noterepository.findById(noteid).get();
+			List<Note> note =  noterepository.findByEmailId(email);
+			
+
 			return new Response(200, noteEnvironment.getProperty("Find_Note"), note);
 		}
+		
+		
 		return new Response(404, noteEnvironment.getProperty("UNAUTHORIZED_USER_EXCEPTION"), null);
 	}
 	
@@ -179,7 +192,7 @@ public class NoteService implements NoteServiceI{
 				boolean isMatches = m.matches();
 				
 				if(isMatches) {
-					note.setSetColor(colour);
+					note.setColor(colour);
 					noterepository.save(note);
 					return new Response(200, noteEnvironment.getProperty("Colour_Setting"), noteEnvironment.getProperty("COLOUR_SET"));
 				}
@@ -190,5 +203,17 @@ public class NoteService implements NoteServiceI{
 			return new Response(404, noteEnvironment.getProperty("NOTE_ID_NOT_FOUND"), null);
 		}
 		return new Response(404, noteEnvironment.getProperty("UNAUTHORIZED_USER_EXCEPTION"), null);
+	}
+
+
+	@Override
+	public List<User> getUsers() {
+		
+		String url = "http://localhost:FundooUserModule/user/showall";
+		
+		Response userlist = restTemplate.getForObject(url, Response.class);
+		
+		List<User> list = (List<User>) userlist.getData(); 
+		return list;
 	}
 }

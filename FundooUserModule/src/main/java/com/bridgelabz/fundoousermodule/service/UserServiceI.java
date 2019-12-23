@@ -17,4 +17,5 @@ public interface UserServiceI {
 	
 	public Response verify(String email);
 
+	public Response showUsers();
 }

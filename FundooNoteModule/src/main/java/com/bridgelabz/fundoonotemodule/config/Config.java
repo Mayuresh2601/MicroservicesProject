@@ -17,6 +17,8 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.bridgelabz.fundoonotemodule.model.Note;
 
@@ -89,12 +91,32 @@ public class Config {
 
 	
 	/**Method: Properties of Redis
-	 * @return
+	 * @return Redis Properties
 	 */
 	@Bean
 	@Primary
 	public RedisProperties redisProperties() {
 		
 		return new RedisProperties();
+	}
+	
+	
+	/**Method: Creating Bean of Rest Template to use it in one instance
+	 * @return Rest Template
+	 */
+	@Bean
+	public RestTemplate resttemplate() {
+		
+		return new RestTemplate();
+	}
+	
+	
+	/**Method: Creating Bean of WebClient to use it in one instance
+	 * @return WebClient Template
+	 */
+	@Bean
+	public WebClient.Builder getWebClientBuilder() {
+		
+		return WebClient.builder();
 	}
 }

@@ -15,8 +15,10 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.client.RestTemplate;
 
 import com.bridgelabz.fundoousermodule.model.User;
 
@@ -28,6 +30,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+@EnableRedisRepositories
 public class Config {
 	
 	
@@ -50,7 +53,6 @@ public class Config {
 		return new ModelMapper();
 	}
 
-	
 	
 	/**Method: To Implement Swagger On UserInterface
 	 * @return SwaggerUI
@@ -75,6 +77,7 @@ public class Config {
 		return new JedisConnectionFactory(configuration);
 	}
 
+	
 	/**Method: Redis Template
 	 * @return
 	 */
@@ -96,5 +99,10 @@ public class Config {
 	public RedisProperties redisProperties() {
 		
 		return new RedisProperties();
+	}
+	
+	public RestTemplate getRestTemplate() {
+		
+		return new RestTemplate();
 	}
 }

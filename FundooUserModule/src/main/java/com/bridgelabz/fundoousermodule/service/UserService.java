@@ -18,6 +18,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.bridgelabz.fundoousermodule.dto.ForgetDTO;
 import com.bridgelabz.fundoousermodule.dto.LoginDTO;
@@ -50,6 +51,9 @@ public class UserService implements UserServiceI{
 	
 	@Autowired
 	private Environment userEnvironment;
+	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	
 	/**
@@ -100,6 +104,17 @@ public class UserService implements UserServiceI{
 	
 		User user = userrepository.findById(userId).get();
 		return new Response(200, userEnvironment.getProperty("Find_User"), user);
+	}
+	
+	
+	/**
+	 *Method: Display All User Details Present in Database
+	 */
+	@Override
+	public Response showUsers() {
+		
+		List<User> userlist = userrepository.findAll();
+		return new Response(200, userEnvironment.getProperty("Show_Users"), userlist);
 	}
 	
 	

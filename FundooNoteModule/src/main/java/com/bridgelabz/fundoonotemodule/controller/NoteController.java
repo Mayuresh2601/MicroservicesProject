@@ -7,11 +7,14 @@
 ******************************************************************************/
 package com.bridgelabz.fundoonotemodule.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.fundoonotemodule.dto.NoteDTO;
+import com.bridgelabz.fundoonotemodule.model.User;
 import com.bridgelabz.fundoonotemodule.response.Response;
 import com.bridgelabz.fundoonotemodule.service.NoteService;
 import com.bridgelabz.fundoonotemodule.utility.Jwt;
@@ -83,10 +87,10 @@ public class NoteController {
 	 * @param token
 	 * @return Find Note By Id Implementation Logic 
 	 */
-	@GetMapping("/find")
-	public Response findNoteById(@RequestHeader String noteId, @RequestHeader String token) {
+	@GetMapping("/find/{id}")
+	public Response findUserNote(@PathVariable String token) {
 		
-		Response response = noteService.findNoteById(noteId, token);
+		Response response = noteService.findUserNote(token);
 		return response;
 	}
 
@@ -114,6 +118,17 @@ public class NoteController {
 	public Response Colour(@RequestHeader String noteId, @RequestHeader String token, @RequestHeader String colour) {
 		
 		Response response = noteService.setColor(noteId, token, colour);
+		return response;
+	}
+	
+	
+	/**Method: To Show All Users present in database
+	 * @return Display All Users Implementation Logic
+	 */
+	@GetMapping("/showall")
+	public List<User> showUsers() {
+
+		List<User> response =  noteService.getUsers();
 		return response;
 	}
 }

@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -52,10 +53,22 @@ public class UserController {
 	 * @return Find User by Id implementation Logic
 	 */
 	
-	@GetMapping("/find")
-	public Response findUser(@RequestHeader String id) {
+	@GetMapping("/find/{id}")
+	public Response findUser(@PathVariable String id) {
 		
 		Response response = userService.findUser(id);
+		return response;
+	}
+	
+	
+	
+	/**Method: To Show All Users present in database
+	 * @return Display All Users Implementation Logic
+	 */
+	@GetMapping("/showall")
+	public Response showUsers() {
+
+		Response response =  userService.showUsers();
 		return response;
 	}
 	

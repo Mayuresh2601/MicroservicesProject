@@ -40,7 +40,7 @@ public class Note implements Serializable{
 	private boolean isArchieve;
 	
 	@Pattern(regexp="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", message = "Colour Code Format is Invalid")
-	private String setColor;
+	private String color;
 
 //	@JsonIgnore
 //	@DBRef(lazy = true)
