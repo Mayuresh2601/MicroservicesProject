@@ -242,5 +242,4 @@ public class NoteService implements NoteServiceI{
 		return userList;
 	}
 	
-	
 }
