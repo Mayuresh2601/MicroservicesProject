@@ -33,6 +33,4 @@ public class User implements Serializable{
 
 	private boolean isValidate;
 	
-	private String lastLogin;
-	
 }

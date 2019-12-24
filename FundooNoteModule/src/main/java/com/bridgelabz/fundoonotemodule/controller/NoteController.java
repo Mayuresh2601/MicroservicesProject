@@ -12,6 +12,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,13 +24,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.fundoonotemodule.dto.NoteDTO;
+import com.bridgelabz.fundoonotemodule.model.Note;
 import com.bridgelabz.fundoonotemodule.model.User;
 import com.bridgelabz.fundoonotemodule.response.Response;
 import com.bridgelabz.fundoonotemodule.service.NoteService;
 import com.bridgelabz.fundoonotemodule.utility.Jwt;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 @RestController
-@RequestMapping("/note")
+@RequestMapping("/fundoonote")
 public class NoteController {
 	
 	@Autowired
@@ -37,6 +41,9 @@ public class NoteController {
 	
 	@Autowired
 	private Jwt jwt;
+	
+	@Autowired
+	Environment noteEnvironment;
 	
 	
 	/**Method: To create a Note
@@ -93,6 +100,17 @@ public class NoteController {
 		Response response = noteService.findUserNote(token);
 		return response;
 	}
+	
+	
+	/**Method: To Display All Notes
+	 * @return Display All Notes Implementation Logic
+	 */
+	@GetMapping("/showall")
+	public Response showNotes() {
+		
+		List<Note> note = noteService.showNotes();
+		return new Response(200, noteEnvironment.getProperty("Show_Notes"), note);
+	}
 
 	
 	/**Method: To Archieve/Unarchieve a Note 
@@ -124,11 +142,13 @@ public class NoteController {
 	
 	/**Method: To Show All Users present in database
 	 * @return Display All Users Implementation Logic
+	 * @throws JsonProcessingException 
+	 * @throws JsonMappingException 
 	 */
-	@GetMapping("/showall")
-	public List<User> showUsers() {
+	@GetMapping("/showallusers")
+	public List<User> showUsers() throws JsonMappingException, JsonProcessingException {
 
-		List<User> response =  noteService.getUsers();
-		return response;
+		List<User> userlist =  noteService.showUsers();
+		return userlist;
 	}
 }

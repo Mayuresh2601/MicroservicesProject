@@ -115,6 +115,7 @@ public class UserService implements UserServiceI{
 		
 		List<User> userlist = userrepository.findAll();
 		return new Response(200, userEnvironment.getProperty("Show_Users"), userlist);
+//		return userlist;
 	}
 	
 	

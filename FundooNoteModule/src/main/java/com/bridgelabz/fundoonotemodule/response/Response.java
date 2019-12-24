@@ -7,16 +7,20 @@ import lombok.Data;
 @Data
 public class Response implements Serializable{
 	/**
-	 * Making Note Response Serializable
+	 * Setting Response Serializable
 	 */
 	private static final long serialVersionUID = 1L;
-	
 
+	
 	private int status;
 	
 	private String message;
 	
 	private Object data;
+	
+	public Response() {
+		
+	}
 	
 	public Response(int status, String message, Object data) {
 		

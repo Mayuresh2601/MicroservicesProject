@@ -18,6 +18,10 @@ public class Response implements Serializable{
 	
 	private Object data;
 	
+	public Response() {
+		
+	}
+	
 	public Response(int status, String message, Object data) {
 		
 		this.status = status;

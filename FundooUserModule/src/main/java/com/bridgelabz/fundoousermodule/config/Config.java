@@ -101,6 +101,11 @@ public class Config {
 		return new RedisProperties();
 	}
 	
+	
+	/**Method: To get Data in Rest Template
+	 * @return Rest Template
+	 */
+	@Bean
 	public RestTemplate getRestTemplate() {
 		
 		return new RestTemplate();

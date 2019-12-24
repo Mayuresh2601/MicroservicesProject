@@ -21,7 +21,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import com.bridgelabz.fundoonotemodule.dto.NoteDTO;
 import com.bridgelabz.fundoonotemodule.model.Note;
@@ -29,6 +28,8 @@ import com.bridgelabz.fundoonotemodule.model.User;
 import com.bridgelabz.fundoonotemodule.repository.NoteRepositoryI;
 import com.bridgelabz.fundoonotemodule.response.Response;
 import com.bridgelabz.fundoonotemodule.utility.Jwt;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Service
 @PropertySource("classpath:message.properties")
@@ -50,8 +51,8 @@ public class NoteService implements NoteServiceI{
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	@Autowired
-	private WebClient.Builder webClient;
+//	@Autowired
+//	private WebClient.Builder webClient;
 
 	/**
 	 *Method: To Create a Note for User
@@ -146,6 +147,16 @@ public class NoteService implements NoteServiceI{
 	
 	
 	/**
+	 *Method: To Display All Notes
+	 */
+	@Override
+	public List<Note> showNotes() {
+		
+		return noterepository.findAll();
+	}
+	
+	
+	/**
 	 *Method: To Archieve/Unarchieve Note for User
 	 */
 	@Cacheable(value = "ArchieveNote", key = "#noteid")
@@ -205,15 +216,17 @@ public class NoteService implements NoteServiceI{
 		return new Response(404, noteEnvironment.getProperty("UNAUTHORIZED_USER_EXCEPTION"), null);
 	}
 
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> getUsers() {
+	public List<User> showUsers() throws JsonMappingException, JsonProcessingException {
+
+		String url = "http://localhost:8081/fundoouser/showall";
 		
-		String url = "http://localhost:FundooUserModule/user/showall";
+		Response userResponse = restTemplate.getForObject(url, Response.class);
 		
-		Response userlist = restTemplate.getForObject(url, Response.class);
+		List<User> userList = (List<User>) userResponse.getData(); 
 		
-		List<User> list = (List<User>) userlist.getData(); 
-		return list;
+		return userList;
 	}
 }

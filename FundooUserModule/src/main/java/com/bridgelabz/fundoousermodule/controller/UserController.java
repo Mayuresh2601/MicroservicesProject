@@ -7,9 +7,13 @@
 ******************************************************************************/
 package com.bridgelabz.fundoousermodule.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,12 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bridgelabz.fundoousermodule.dto.ForgetDTO;
 import com.bridgelabz.fundoousermodule.dto.LoginDTO;
 import com.bridgelabz.fundoousermodule.dto.RegisterDTO;
+import com.bridgelabz.fundoousermodule.model.User;
 import com.bridgelabz.fundoousermodule.response.Response;
 import com.bridgelabz.fundoousermodule.service.UserService;
 import com.bridgelabz.fundoousermodule.utility.Jwt;
+import com.netflix.ribbon.proxy.annotation.Http;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/fundoouser")
 public class UserController {
 	
 	@Autowired

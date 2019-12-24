@@ -18,7 +18,7 @@ import com.bridgelabz.fundoolabelmodule.service.LabelService;
 import com.bridgelabz.fundoolabelmodule.utility.Jwt;
 
 @RestController
-@RequestMapping("/label")
+@RequestMapping("/fundoolabel")
 public class LabelController {
 	
 	@Autowired
