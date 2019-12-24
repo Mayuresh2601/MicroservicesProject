@@ -1,11 +1,8 @@
 package com.bridgelabz.fundoousermodule.service;
 
-import java.util.List;
-
 import com.bridgelabz.fundoousermodule.dto.ForgetDTO;
 import com.bridgelabz.fundoousermodule.dto.LoginDTO;
 import com.bridgelabz.fundoousermodule.dto.RegisterDTO;
-import com.bridgelabz.fundoousermodule.model.User;
 import com.bridgelabz.fundoousermodule.response.Response;
 
 public interface UserServiceI {
@@ -21,4 +18,6 @@ public interface UserServiceI {
 	public Response verify(String email);
 
 	public Response showUsers();
+	
+	public Response lastLoginUser();
 }

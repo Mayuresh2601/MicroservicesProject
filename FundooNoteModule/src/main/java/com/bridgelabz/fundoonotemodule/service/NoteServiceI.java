@@ -27,4 +27,5 @@ public interface NoteServiceI {
 	
 	public List<User> showUsers() throws JsonMappingException, JsonProcessingException;
 	
+	public List<User> getUserLastLogin();
 }

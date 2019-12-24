@@ -151,4 +151,15 @@ public class NoteController {
 		List<User> userlist =  noteService.showUsers();
 		return userlist;
 	}
+	
+	
+	/**Method: To Show the Users Last Login Date and Time
+	 * @return Display All Users Last Login Date and Time Implementation Logic
+	 */
+	@GetMapping("/getlastlogin")
+	public List<User> getUserLastLogin() {
+
+		List<User> userlist =  noteService.getUserLastLogin();
+		return userlist;
+	}
 }

@@ -229,4 +229,20 @@ public class NoteService implements NoteServiceI{
 		
 		return userList;
 	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> getUserLastLogin() {
+		
+		String url = "http://localhost:8081/fundoouser/showlastlogin";
+		
+		Response userResponse = restTemplate.getForObject(url, Response.class);
+		
+		List<User> userList = (List<User>) userResponse.getData(); 
+        
+		return userList;
+	}
+	
+	
 }

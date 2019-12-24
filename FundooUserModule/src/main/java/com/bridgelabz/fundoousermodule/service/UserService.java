@@ -7,8 +7,11 @@
 ******************************************************************************/
 package com.bridgelabz.fundoousermodule.service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +21,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import com.bridgelabz.fundoousermodule.dto.ForgetDTO;
 import com.bridgelabz.fundoousermodule.dto.LoginDTO;
@@ -51,9 +53,6 @@ public class UserService implements UserServiceI{
 	
 	@Autowired
 	private Environment userEnvironment;
-	
-	@Autowired
-	private RestTemplate restTemplate;
 	
 	
 	/**
@@ -115,7 +114,6 @@ public class UserService implements UserServiceI{
 		
 		List<User> userlist = userrepository.findAll();
 		return new Response(200, userEnvironment.getProperty("Show_Users"), userlist);
-//		return userlist;
 	}
 	
 	
@@ -128,6 +126,10 @@ public class UserService implements UserServiceI{
 		User user = userrepository.findByEmail(email);
 		if(logindto != null) {
 				
+			LocalDateTime now = LocalDateTime.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+			String date = now.format(formatter);
+			user.setLastLogin(date);
 			boolean isValid = bCryptPasswordEncoder.matches(logindto.getPassword(), user.getPassword());
 			
 			if(isValid) {
@@ -180,5 +182,17 @@ public class UserService implements UserServiceI{
 			return new Response(200, userEnvironment.getProperty("VERIFY_USER"), null);
 		}
 		return new Response(404, userEnvironment.getProperty("UNAUTHORIZED_USER"), null);
+	}
+
+
+	/**
+	 *Method: To Show Last Login Users List
+	 */
+	@Override
+	public Response lastLoginUser() {
+		
+		List<User> userList= userrepository.findAll();
+        userList = userList.stream().sorted((list1,list2)->list2.getLastLogin().compareToIgnoreCase(list1.getLastLogin())).collect(Collectors.toList());
+        return new Response(200, userEnvironment.getProperty("Show_Users_Last_Login"), userList);
 	}
 }

@@ -7,13 +7,9 @@
 ******************************************************************************/
 package com.bridgelabz.fundoousermodule.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,11 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bridgelabz.fundoousermodule.dto.ForgetDTO;
 import com.bridgelabz.fundoousermodule.dto.LoginDTO;
 import com.bridgelabz.fundoousermodule.dto.RegisterDTO;
-import com.bridgelabz.fundoousermodule.model.User;
 import com.bridgelabz.fundoousermodule.response.Response;
 import com.bridgelabz.fundoousermodule.service.UserService;
 import com.bridgelabz.fundoousermodule.utility.Jwt;
-import com.netflix.ribbon.proxy.annotation.Http;
 
 @RestController
 @RequestMapping("/fundoouser")
@@ -113,6 +107,17 @@ public class UserController {
 		
 		String email = jwt.getEmailId(token);
 		Response response = userService.verify(email);
+		return response;
+	}
+	
+	
+	/**Method: To Show All Users present in database
+	 * @return Display All Users Implementation Logic
+	 */
+	@GetMapping("/showlastlogin")
+	public Response lastLoginUser() {
+
+		Response response =  userService.lastLoginUser();
 		return response;
 	}
 }
