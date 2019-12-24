@@ -111,8 +111,8 @@ public class UserController {
 	}
 	
 	
-	/**Method: To Show All Users present in database
-	 * @return Display All Users Implementation Logic
+	/**Method: To Show the Users Last Login Date and Time
+	 * @return Display All Users Last Login Date and Time Implementation Logic
 	 */
 	@GetMapping("/showlastlogin")
 	public Response lastLoginUser() {

@@ -50,9 +50,6 @@ public class NoteService implements NoteServiceI{
 	
 	@Autowired
 	private RestTemplate restTemplate;
-	
-//	@Autowired
-//	private WebClient.Builder webClient;
 
 	/**
 	 *Method: To Create a Note for User
@@ -118,7 +115,6 @@ public class NoteService implements NoteServiceI{
 		
 		if(email != null) {
 			noterepository.deleteById(noteid);
-			
 			return new Response(200, noteEnvironment.getProperty("Delete_Note"), noteEnvironment.getProperty("DELETE_NOTE"));
 		}
 		return new Response(404, noteEnvironment.getProperty("UNAUTHORIZED_USER_EXCEPTION"), null);
@@ -136,12 +132,8 @@ public class NoteService implements NoteServiceI{
 		
 		if(email != null) {
 			List<Note> note =  noterepository.findByEmailId(email);
-			
-
 			return new Response(200, noteEnvironment.getProperty("Find_Note"), note);
 		}
-		
-		
 		return new Response(404, noteEnvironment.getProperty("UNAUTHORIZED_USER_EXCEPTION"), null);
 	}
 	
@@ -171,8 +163,7 @@ public class NoteService implements NoteServiceI{
 			if(note.getId().equals(noteid)) {
 				note.setArchieve(!(note.isArchieve()));
 				noterepository.save(note);
-				System.out.println(noteEnvironment.getProperty("Archieve_Note"));
-				System.out.println(note.isArchieve());
+			
 				if(note.isArchieve()) {
 					return new Response(200, noteEnvironment.getProperty("Archieve_Note"), note.isArchieve());
 				}else {
@@ -188,6 +179,7 @@ public class NoteService implements NoteServiceI{
 	/**
 	 *Method: To Set Colour to Note
 	 */
+	@Cacheable(value = "SetColour", key = "#noteid")
 	@Override
 	public Response setColor(String noteid, String token, String colour) {
 	
@@ -217,6 +209,9 @@ public class NoteService implements NoteServiceI{
 	}
 
 	
+	/**
+	 *Method: Show All User Details Present in Database
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> showUsers() throws JsonMappingException, JsonProcessingException {
@@ -231,6 +226,9 @@ public class NoteService implements NoteServiceI{
 	}
 
 
+	/**
+	 *Method: To Show Last Login Users List
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getUserLastLogin() {

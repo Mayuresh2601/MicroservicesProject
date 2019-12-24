@@ -43,7 +43,7 @@ public class NoteController {
 	private Jwt jwt;
 	
 	@Autowired
-	Environment noteEnvironment;
+	private Environment noteEnvironment;
 	
 	
 	/**Method: To create a Note
