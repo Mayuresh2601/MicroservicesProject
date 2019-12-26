@@ -1,13 +1,8 @@
 /******************************************************************************
- *  Compilation:  javac -d bin ElasticConfig.java
- *  Execution:    
- *               
- *  
- *  Purpose:       main purpose this class create for configuration elastic search
- *
- *  @author  pandit walde
- *  @version 1.0
- *  @since   3-12-2019
+ * 
+ *  Purpose: To Configure Elastic Search
+ *  @author  Mayuresh Sunil Sonar
+ *  @since   23-12-2019
  *
  ******************************************************************************/
 
@@ -25,22 +20,24 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ElasticConfig {
 
-
-	@Value("${elasticsearch.host}")   //value annotation for host
+	//Value Annotation for host
+	@Value("${elasticsearch.host}")   
 	private String elasticsearchHost;
 
-	@Value("${elasticsearch.port}")    //value annotation for port
+	//Value Annotation for port
+	@Value("${elasticsearch.port}")    
 	private Integer elasticsearchPort;
 
+	//Value Annotation for HTTP
 	@Value("http")
-	private String elasticsearchScheme;   //value annotation for http
+	private String elasticsearchScheme;   
   
 	
     /**Method: Write Client method for allow and Build Request and Response  
      * @return Response for Client 
      */
     @Bean
-	public RestHighLevelClient client() { // write client method for allow and bulid request and response  
+	public RestHighLevelClient client() { 
 
 		RestHighLevelClient client = new RestHighLevelClient(
 				RestClient.builder(new HttpHost(elasticsearchHost, elasticsearchPort, elasticsearchScheme)));

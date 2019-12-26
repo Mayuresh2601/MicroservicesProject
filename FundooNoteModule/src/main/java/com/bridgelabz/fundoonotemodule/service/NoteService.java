@@ -3,10 +3,12 @@
 *  Purpose: To Implement Fundoo Notes App
 *  @class Note Service
 *  @author  Mayuresh Sunil Sonar
+*  @since 21-12-2019
 *
 ******************************************************************************/
 package com.bridgelabz.fundoonotemodule.service;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -50,13 +52,18 @@ public class NoteService implements NoteServiceI{
 	
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	private ElasticSearchService elasticSearchService;
 
+	
 	/**
 	 *Method: To Create a Note for User
+	 * @throws IOException 
 	 */
 	@Cacheable(value = "CreateNote", key = "#email")
 	@Override
-	public Response createNote(String email, NoteDTO notedto) {
+	public Response createNote(String email, NoteDTO notedto) throws IOException {
 
 		if(email != null) {
 			Note note = mapper.map(notedto, Note.class);
@@ -68,6 +75,7 @@ public class NoteService implements NoteServiceI{
 			note.setCreateDate(date);
 			note.setColor("#FFFFFF");
 			noterepository.save(note);
+			elasticSearchService.createDocument(note);
 			
 			return new Response(200, noteEnvironment.getProperty("Create_Note"), noteEnvironment.getProperty("CREATE_NOTE"));
 		}
@@ -77,14 +85,15 @@ public class NoteService implements NoteServiceI{
 	
 	/**
 	 *Method: To Update a Note for User
+	 * @throws IOException 
 	 */
-	@Cacheable(value = "UpdateNote", key = "#noteid")
+	@Cacheable(value = "UpdateNote", key = "#noteId")
 	@Override
-	public Response updateNote(String noteid, String email, NoteDTO notedto) {
+	public Response updateNote(String noteId, String email, NoteDTO notedto) throws IOException {
 		
 		if(email != null) {
 		
-			Note noteupdate = noterepository.findById(noteid).get();
+			Note noteupdate = noterepository.findById(noteId).get();
 			if(noteupdate != null) {
 				noteupdate.setTitle(notedto.getTitle());
 				noteupdate.setDescription(notedto.getDescription());
@@ -95,6 +104,7 @@ public class NoteService implements NoteServiceI{
 				
 				noteupdate.setEditDate(date);
 				noterepository.save(noteupdate);
+				elasticSearchService.updateDocument(noteupdate, noteId);
 				
 				return new Response(200, noteEnvironment.getProperty("Update_Note"), noteEnvironment.getProperty("UPDATE_NOTE"));
 			}
@@ -106,15 +116,17 @@ public class NoteService implements NoteServiceI{
 	
 	/**
 	 *Method: To Delete a Note
+	 * @throws IOException 
 	 */
-	@Cacheable(value = "DeleteNote", key = "#noteid")
+	@Cacheable(value = "DeleteNote", key = "#noteId")
 	@Override
-	public Response deleteNote(String noteid, String token) {
+	public Response deleteNote(String noteId, String token) throws IOException {
 		
 		String email = jwt.getEmailId(token);
 		
 		if(email != null) {
-			noterepository.deleteById(noteid);
+			noterepository.deleteById(noteId);
+			elasticSearchService.deleteDocument(noteId);
 			return new Response(200, noteEnvironment.getProperty("Delete_Note"), noteEnvironment.getProperty("DELETE_NOTE"));
 		}
 		return new Response(404, noteEnvironment.getProperty("UNAUTHORIZED_USER_EXCEPTION"), null);
@@ -124,7 +136,7 @@ public class NoteService implements NoteServiceI{
 	/**
 	 *Method: Search a Note using Id
 	 */
-	@Cacheable(value = "FindNote", key = "#noteid")
+	@Cacheable(value = "FindNote", key = "#noteId")
 	@Override
 	public Response findUserNote(String token) {
 		
@@ -151,16 +163,16 @@ public class NoteService implements NoteServiceI{
 	/**
 	 *Method: To Archieve/Unarchieve Note for User
 	 */
-	@Cacheable(value = "ArchieveNote", key = "#noteid")
+	@Cacheable(value = "ArchieveNote", key = "#noteId")
 	@Override
-	public Response isArchieve(String noteid, String token) {
+	public Response isArchieve(String noteId, String token) {
 		
 		String email = jwt.getEmailId(token);
 		List<Note> listofNote= noterepository.findByEmailId(email);
-		Note note =listofNote.stream().filter(i->i.getId().equals(noteid)).findAny().orElse(null);
+		Note note =listofNote.stream().filter(i->i.getId().equals(noteId)).findAny().orElse(null);
 		if(email != null)
 		{
-			if(note.getId().equals(noteid)) {
+			if(note.getId().equals(noteId)) {
 				note.setArchieve(!(note.isArchieve()));
 				noterepository.save(note);
 			
@@ -178,15 +190,16 @@ public class NoteService implements NoteServiceI{
 
 	/**
 	 *Method: To Set Colour to Note
+	 * @throws IOException 
 	 */
-	@Cacheable(value = "SetColour", key = "#noteid")
+	@Cacheable(value = "SetColour", key = "#noteId")
 	@Override
-	public Response setColor(String noteid, String token, String colour) {
+	public Response setColor(String noteId, String token, String colour) throws IOException {
 	
 		String email = jwt.getEmailId(token);
 		if(email != null) {
 			
-			Note note =  noterepository.findById(noteid).get();
+			Note note =  noterepository.findById(noteId).get();
 			if(note != null) {
 				
 				String pattern = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$";
@@ -197,6 +210,7 @@ public class NoteService implements NoteServiceI{
 				if(isMatches) {
 					note.setColor(colour);
 					noterepository.save(note);
+					elasticSearchService.updateDocument(note, noteId);
 					return new Response(200, noteEnvironment.getProperty("Colour_Setting"), noteEnvironment.getProperty("COLOUR_SET"));
 				}
 				else {
@@ -241,5 +255,4 @@ public class NoteService implements NoteServiceI{
         
 		return userList;
 	}
-	
 }

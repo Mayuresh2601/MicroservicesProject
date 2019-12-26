@@ -2,8 +2,7 @@
  * 
  *  Purpose: Create Controller for Elastic Search
  *  @author  Mayuresh Sunil Sonar
- *  @version 1.0
- *  @since  3-12-2019
+ *  @since  24-12-2019
  *
  ******************************************************************************/
 package com.bridgelabz.fundoonotemodule.controller;
@@ -30,10 +29,10 @@ import com.bridgelabz.fundoonotemodule.service.ElasticSearchService;
 
 @RestController
 @RequestMapping("/elasticsearch")
-public class Elasticsearchcontroller {
+public class ElasticSearchController {
 		
 	@Autowired
-	private ElasticSearchService elasticSearch;
+	private ElasticSearchService elasticSearchService;
 	
 	
 	/**Method: To Create Document in Elastic Search DB
@@ -44,7 +43,7 @@ public class Elasticsearchcontroller {
 	@PostMapping("/create")
 	public ResponseEntity<Response> createDocument(@RequestBody Note note) throws IOException{
 		
-		return new ResponseEntity<Response>((elasticSearch.createDocument(note)),HttpStatus.OK);
+		return new ResponseEntity<Response>((elasticSearchService.createDocument(note)),HttpStatus.OK);
 	}
 	
 	
@@ -56,7 +55,7 @@ public class Elasticsearchcontroller {
 	@GetMapping("/read")
 	public ResponseEntity<Response> searchById( @RequestParam String id) throws IOException{
 		
-		return new ResponseEntity<Response>((elasticSearch.readDocument(id)),HttpStatus.OK);
+		return new ResponseEntity<Response>((elasticSearchService.readDocument(id)),HttpStatus.OK);
 	}
 	
 	
@@ -68,7 +67,7 @@ public class Elasticsearchcontroller {
 	@DeleteMapping("/delete")
 	public ResponseEntity<Response> deleteDocuemnt(@RequestParam String id) throws IOException{
 		
-		return new ResponseEntity<Response>((elasticSearch.deleteDocument(id)),HttpStatus.OK);
+		return new ResponseEntity<Response>((elasticSearchService.deleteDocument(id)),HttpStatus.OK);
 	}
 	
 	
@@ -80,20 +79,20 @@ public class Elasticsearchcontroller {
 	@GetMapping("/showall")
 	public Response searchField(@RequestBody String searchString) throws IOException {
            
-		return new Response(200, " All Notes ", elasticSearch.search(searchString));
+		return new Response(200, " All Notes ", elasticSearchService.search(searchString));
 	}
 	
 	
 	/**Method: To Update Document Elastic Search DB
 	 * @param Provide Detail of Update information  of User note
 	 * @param Provide User Id to Update Document 
-	 * @return Update Document Successfull
+	 * @return Update Document Successfully
 	 * @throws IOException
 	 */
 	@PutMapping("/update")
 	public ResponseEntity<Response> updateDocument(@RequestBody Note note, @RequestParam String id) throws IOException {
         
-		return new ResponseEntity<Response>((elasticSearch.updateDocument(note, id)),HttpStatus.CREATED);
+		return new ResponseEntity<Response>((elasticSearchService.updateDocument(note, id)),HttpStatus.CREATED);
 	}
 
 	
@@ -105,7 +104,7 @@ public class Elasticsearchcontroller {
 	@GetMapping("/searchresult")
 	public Response getSearchResult(@RequestBody SearchResponse searchResponse) throws IOException {
            
-		return new Response(200, "Search Result", elasticSearch.getSearchResult(searchResponse));
+		return new Response(200, "Search Result", elasticSearchService.getSearchResult(searchResponse));
 	}
 	
 	
@@ -117,7 +116,7 @@ public class Elasticsearchcontroller {
 	@GetMapping("/searchbytitle")
 	public Response searchByTitle(@RequestBody String title) throws IOException {
            
-		return new Response(200, "Search By Title", elasticSearch.searchByTitle(title));
+		return new Response(200, "Search By Title", elasticSearchService.searchByTitle(title));
 	}
 	
 	
@@ -129,6 +128,6 @@ public class Elasticsearchcontroller {
 	@GetMapping("/searchbydescription")
 	public Response searchByDescription(@RequestBody String description) throws IOException {
            
-		return new Response(200, "Search By Description", elasticSearch.searchByDescription(description));
+		return new Response(200, "Search By Description", elasticSearchService.searchByDescription(description));
 	}
 }

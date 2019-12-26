@@ -2,8 +2,7 @@
  *  
  *  Purpose: Create Service Interface for Elastic Search
  *  @author  Mayuresh Sunil Sonar
- *  @version 1.0
- *  @since  3-12-2019
+ *  @since 24-12-2019
  *
  ******************************************************************************/
 package com.bridgelabz.fundoonotemodule.service;
@@ -14,7 +13,7 @@ import java.util.List;
 import com.bridgelabz.fundoonotemodule.model.Note;
 import com.bridgelabz.fundoonotemodule.response.Response;
 
-public interface Elasticsearchservice { 
+public interface ElasticSearchServiceI { 
 	
 	public Response createDocument(Note note) throws IOException; 
 

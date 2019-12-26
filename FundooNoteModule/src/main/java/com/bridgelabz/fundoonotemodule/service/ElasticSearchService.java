@@ -2,15 +2,12 @@
  *  
  *  Purpose: Create Service class to write all logic of Elastic Search
  *  @author  Mayuresh Sunil Sonar
- *  @version 1.0
- *  @since  3-12-2019
+ *  @since  24-12-2019
  *
  ******************************************************************************/
 package com.bridgelabz.fundoonotemodule.service;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +28,7 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.fundoonotemodule.model.Note;
@@ -39,16 +37,22 @@ import com.bridgelabz.fundoonotemodule.utility.ResponseUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
-public class ElasticSearchService implements Elasticsearchservice {
+public class ElasticSearchService implements ElasticSearchServiceI {
 
-	private final String INDEX = "note"; // create for elastic search same like as database schema
-	private final String TYPE = "notes"; // create for elastic search same like database table
+	// Created for Elastic Search same like "Database Schema"
+	private final String INDEX = "note"; 
+	
+	// Created for Elastic Search same like "Database Table"
+	private final String TYPE = "notes";
 
 	@Autowired
 	private RestHighLevelClient client;
 
 	@Autowired
 	private ObjectMapper mapper;  
+	
+	@Autowired
+	private Environment elasticEnv;
 
 
 	/**
@@ -60,16 +64,10 @@ public class ElasticSearchService implements Elasticsearchservice {
 
 		Map<String, Object> map = mapper.convertValue(note, Map.class);
 		
-		LocalDateTime now = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-		String date = now.format(formatter);
-		note.setCreateDate(date);
-		note.setColor("#FFFFFF");
-		
 		IndexRequest indexrequest = new IndexRequest(INDEX, TYPE, note.getId()).source(map); 
 		IndexResponse indexresponse = client.index(indexrequest, RequestOptions.DEFAULT);
 
-		ResponseUtility.CustomSucessResponse("HTTP_SUCCESS_MSG", note);
+		ResponseUtility.CustomSucessResponse(elasticEnv.getProperty("SUCCESS_MSG"), note);
 		return ResponseUtility.customSuccessResponse(indexresponse.getResult().name()); 
 	}
 
@@ -83,7 +81,8 @@ public class ElasticSearchService implements Elasticsearchservice {
 		GetRequest getRequest = new GetRequest(INDEX, TYPE, id);
 		GetResponse getResponse = client.get(getRequest, RequestOptions.DEFAULT);
 		Map<String, Object> resultMap = getResponse.getSource(); 
-		return ResponseUtility.CustomSucessResponse("Success", mapper.convertValue(resultMap, Note.class));
+
+		return ResponseUtility.CustomSucessResponse(elasticEnv.getProperty("SUCCESS_MSG"), mapper.convertValue(resultMap, Note.class));
 	}
 
 	
@@ -111,10 +110,10 @@ public class ElasticSearchService implements Elasticsearchservice {
 	@Override
 	public Response deleteDocument(String id) throws IOException {
 
-		DeleteRequest deleterequest = new DeleteRequest(INDEX, TYPE, id);
-		DeleteResponse deleteresponse = client.delete(deleterequest, RequestOptions.DEFAULT);
+		DeleteRequest deleteRequest = new DeleteRequest(INDEX, TYPE, id);
+		DeleteResponse deleteResponse = client.delete(deleteRequest, RequestOptions.DEFAULT);
 
-		return new Response(200, "delete note", deleteresponse.getResult().name()); 
+		return new Response(200, elasticEnv.getProperty("DELETE_DOCUMENT"), deleteResponse.getResult().name()); 
 	}
 
 	
@@ -133,7 +132,7 @@ public class ElasticSearchService implements Elasticsearchservice {
 		updateRequest.doc(map);
 
 		UpdateResponse updateResponse = client.update(updateRequest, RequestOptions.DEFAULT); 
-		return new Response(200, "update note", updateResponse.getResult().name());
+		return new Response(200, elasticEnv.getProperty("UPDATE_DOCUMENT"), updateResponse.getResult().name());
 	}
 
 	
@@ -183,7 +182,7 @@ public class ElasticSearchService implements Elasticsearchservice {
 		searchRequest.source(searchSourceBuilder);
 		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
 
-		return new Response(200, "user title", getSearchResult(searchResponse));
+		return new Response(200, elasticEnv.getProperty("NOTE_TITLE"), getSearchResult(searchResponse));
 	}
 	
 	
@@ -200,7 +199,7 @@ public class ElasticSearchService implements Elasticsearchservice {
 		searchRequest.source(searchSourceBuilder);
 		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT); 																				// request
 
-		return new Response(200, "user title", getSearchResult(searchResponse));
+		return new Response(200, elasticEnv.getProperty("NOTE_DESCRIPTION"), getSearchResult(searchResponse));
 	}
 
 }

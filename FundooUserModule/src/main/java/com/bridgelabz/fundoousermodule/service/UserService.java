@@ -130,10 +130,11 @@ public class UserService implements UserServiceI{
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 			String date = now.format(formatter);
 			user.setLastLogin(date);
+			boolean isChecker = user.isValidate();
 			boolean isValid = bCryptPasswordEncoder.matches(logindto.getPassword(), user.getPassword());
 			
-			if(isValid) {
-				user.setValidate(true);
+			if(isValid && isChecker) {
+				
 				userrepository.save(user);
 				return new Response(200, userEnvironment.getProperty("Login"), userEnvironment.getProperty("USER_LOGIN_SUCCESSFUL"));
 			}
@@ -159,11 +160,10 @@ public class UserService implements UserServiceI{
 		if(email != null) {
 			User user = mapper.map(forget, User.class);
 			String token = jwt.createToken(user.getEmail());
-			System.out.println("Recieved token:::::::  "+token);
 			jms.sendMail(user.getEmail(), token);
-			return new Response(200, userEnvironment.getProperty("CHECK_YOUR_MAIL"), userEnvironment.getProperty("CHECK_YOUR_MAIL"));
+			return new Response(200, userEnvironment.getProperty("CHECK_YOUR_MAIL"), null);
 		}	
-		return new Response(404, userEnvironment.getProperty("UNAUTHORIZED_USER"), null);
+		return new Response(404, userEnvironment.getProperty("EMAILID_NOT_FOUND"), null);
 	}
 	
 	

@@ -1,6 +1,5 @@
 package com.bridgelabz.fundoonotemodule.model;
 
-
 import java.io.Serializable;
 
 import javax.validation.constraints.NotBlank;

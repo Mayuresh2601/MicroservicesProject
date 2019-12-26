@@ -28,8 +28,8 @@ public class RegisterDTO {
 	private String confirmPassword;
 	
 	@NotBlank(message = "Mobile Number is Mandatory")
+	@Pattern(regexp = "^[0-9]*$", message = "Mobile Number should be Numeric Values")
+	@Size(min = 10,max = 10,message = "Mobile Number Should be 10 Digit")
 	private String mobileNumber;
-	
-	private boolean isValidate;
 
 }

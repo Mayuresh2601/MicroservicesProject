@@ -1,5 +1,6 @@
 package com.bridgelabz.fundoonotemodule.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.bridgelabz.fundoonotemodule.dto.NoteDTO;
@@ -11,19 +12,19 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 public interface NoteServiceI {
 	
-	public Response createNote(String token, NoteDTO notedto);
+	public Response createNote(String token, NoteDTO notedto) throws IOException;
 	
-	public Response updateNote(String noteid, String email, NoteDTO notedto);
+	public Response updateNote(String noteId, String email, NoteDTO notedto) throws IOException;
 	
-	public Response deleteNote(String noteid, String email);
+	public Response deleteNote(String noteid, String email) throws IOException;
 	
 	public Response findUserNote(String email);
 	
 	public List<Note> showNotes();
 	
-	public Response isArchieve(String noteid, String email);
+	public Response isArchieve(String noteId, String email);
 	
-	public Response setColor(String noteid, String token, String colour);
+	public Response setColor(String noteId, String token, String colour) throws IOException;
 	
 	public List<User> showUsers() throws JsonMappingException, JsonProcessingException;
 	
