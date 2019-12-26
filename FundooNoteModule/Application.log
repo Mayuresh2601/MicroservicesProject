@@ -1,0 +1,213 @@
+2019-12-26 18:47:09.129  INFO 15021 --- [restartedMain] c.b.f.FundooNoteModuleApplication        : No active profile set, falling back to default profiles: default
+2019-12-26 18:47:09.361  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:47:09.361  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2019-12-26 18:47:09.363  INFO 15021 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotemodule.repository.NoteRepositoryI. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+2019-12-26 18:47:09.364  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2ms. Found 0 Elasticsearch repository interfaces.
+2019-12-26 18:47:09.365  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:47:09.365  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2019-12-26 18:47:09.366  INFO 15021 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotemodule.repository.NoteRepositoryI. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+2019-12-26 18:47:09.366  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1ms. Found 0 Reactive Elasticsearch repository interfaces.
+2019-12-26 18:47:09.372  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:47:09.372  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2019-12-26 18:47:09.374  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2ms. Found 1 MongoDB repository interfaces.
+2019-12-26 18:47:09.377  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:47:09.377  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-26 18:47:09.378  INFO 15021 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotemodule.repository.NoteRepositoryI. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2019-12-26 18:47:09.378  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1ms. Found 0 Redis repository interfaces.
+2019-12-26 18:47:09.422  INFO 15021 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=e5af277e-eca6-3f8b-98d8-170efa85de31
+2019-12-26 18:47:09.437  INFO 15021 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$64514df5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-26 18:47:09.465  WARN 15021 --- [restartedMain] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
+2019-12-26 18:47:09.482  INFO 15021 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2019-12-26 18:47:09.483  INFO 15021 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-26 18:47:09.483  INFO 15021 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-26 18:47:09.495  INFO 15021 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-26 18:47:09.496  INFO 15021 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 366 ms
+2019-12-26 18:47:09.544  INFO 15021 --- [restartedMain] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-12-26 18:47:09.544  INFO 15021 --- [restartedMain] org.mongodb.driver.cluster               : Adding discovered server localhost:27017 to client view of cluster
+2019-12-26 18:47:09.546  INFO 15021 --- [cluster-ClusterId{value='5e04b2d5b7cea25ff782e0d8', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:9, serverValue:12}] to localhost:27017
+2019-12-26 18:47:09.547  INFO 15021 --- [cluster-ClusterId{value='5e04b2d5b7cea25ff782e0d8', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 6, 3]}, minWireVersion=0, maxWireVersion=6, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=195119}
+2019-12-26 18:47:09.547  INFO 15021 --- [cluster-ClusterId{value='5e04b2d5b7cea25ff782e0d8', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Discovered cluster type of STANDALONE
+2019-12-26 18:47:09.563  WARN 15021 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2019-12-26 18:47:09.682  INFO 15021 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2019-12-26 18:47:09.692  WARN 15021 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-12-26 18:47:09.692  INFO 15021 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-26 18:47:09.714  INFO 15021 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-26 18:47:10.814  INFO 15021 --- [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2019-12-26 18:47:11.830  INFO 15021 --- [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2019-12-26 18:47:11.889  INFO 15021 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-12-26 18:47:11.891  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-12-26 18:47:11.892  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-12-26 18:47:11.893  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-12-26 18:47:11.893  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-12-26 18:47:11.893  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-12-26 18:47:11.930  INFO 15021 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-12-26 18:47:11.931  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2019-12-26 18:47:11.931  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2019-12-26 18:47:11.931  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2019-12-26 18:47:11.931  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2019-12-26 18:47:11.931  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2019-12-26 18:47:11.931  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2019-12-26 18:47:11.931  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2019-12-26 18:47:11.933  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2019-12-26 18:47:11.934  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2019-12-26 18:47:11.934  INFO 15021 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-12-26 18:47:11.935  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1577366231935 with initial instances count: 2
+2019-12-26 18:47:11.936  INFO 15021 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application FUNDOO-NOTE-MODULE with eureka with status UP
+2019-12-26 18:47:11.936  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1577366231936, current=UP, previous=STARTING]
+2019-12-26 18:47:11.937  INFO 15021 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082: registering service...
+2019-12-26 18:47:11.937  INFO 15021 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-12-26 18:47:11.938  INFO 15021 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-12-26 18:47:11.941  INFO 15021 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-12-26 18:47:11.941  INFO 15021 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082 - registration status: 204
+2019-12-26 18:47:11.989  INFO 15021 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2019-12-26 18:47:11.990  INFO 15021 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8082
+2019-12-26 18:47:11.990  INFO 15021 --- [restartedMain] c.b.f.FundooNoteModuleApplication        : Started FundooNoteModuleApplication in 4.94 seconds (JVM running for 1826.475)
+2019-12-26 18:47:11.992  INFO 15021 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-12-26 18:48:23.330  INFO 15021 --- [Thread-65] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application FUNDOO-NOTE-MODULE with eureka with status DOWN
+2019-12-26 18:48:23.330  WARN 15021 --- [Thread-65] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1577366303330, current=DOWN, previous=UP]
+2019-12-26 18:48:23.331  INFO 15021 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082: registering service...
+2019-12-26 18:48:23.343  INFO 15021 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082 - registration status: 204
+2019-12-26 18:48:23.358  INFO 15021 --- [Thread-65] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-26 18:48:23.362  INFO 15021 --- [Thread-65] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2019-12-26 18:48:26.362  INFO 15021 --- [Thread-65] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2019-12-26 18:48:26.368  INFO 15021 --- [Thread-65] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082 - deregister  status: 200
+2019-12-26 18:48:26.383  INFO 15021 --- [Thread-65] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2019-12-26 18:48:28.602  INFO 15021 --- [restartedMain] c.b.f.FundooNoteModuleApplication        : No active profile set, falling back to default profiles: default
+2019-12-26 18:48:28.851  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:48:28.851  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2019-12-26 18:48:28.854  INFO 15021 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotemodule.repository.NoteRepositoryI. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+2019-12-26 18:48:28.854  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2ms. Found 0 Elasticsearch repository interfaces.
+2019-12-26 18:48:28.855  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:48:28.855  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2019-12-26 18:48:28.856  INFO 15021 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotemodule.repository.NoteRepositoryI. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+2019-12-26 18:48:28.856  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1ms. Found 0 Reactive Elasticsearch repository interfaces.
+2019-12-26 18:48:28.861  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:48:28.861  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2019-12-26 18:48:28.864  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2ms. Found 1 MongoDB repository interfaces.
+2019-12-26 18:48:28.867  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:48:28.867  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-26 18:48:28.868  INFO 15021 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotemodule.repository.NoteRepositoryI. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2019-12-26 18:48:28.868  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1ms. Found 0 Redis repository interfaces.
+2019-12-26 18:48:28.912  INFO 15021 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=e5af277e-eca6-3f8b-98d8-170efa85de31
+2019-12-26 18:48:28.927  INFO 15021 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$64514df5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-26 18:48:28.958  WARN 15021 --- [restartedMain] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
+2019-12-26 18:48:28.977  INFO 15021 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2019-12-26 18:48:28.977  INFO 15021 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-26 18:48:28.977  INFO 15021 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-26 18:48:28.991  INFO 15021 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-26 18:48:28.991  INFO 15021 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 388 ms
+2019-12-26 18:48:29.049  INFO 15021 --- [restartedMain] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-12-26 18:48:29.049  INFO 15021 --- [restartedMain] org.mongodb.driver.cluster               : Adding discovered server localhost:27017 to client view of cluster
+2019-12-26 18:48:29.051  INFO 15021 --- [cluster-ClusterId{value='5e04b325b7cea25ff782e0d9', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:10, serverValue:13}] to localhost:27017
+2019-12-26 18:48:29.052  INFO 15021 --- [cluster-ClusterId{value='5e04b325b7cea25ff782e0d9', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 6, 3]}, minWireVersion=0, maxWireVersion=6, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=233339}
+2019-12-26 18:48:29.052  INFO 15021 --- [cluster-ClusterId{value='5e04b325b7cea25ff782e0d9', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Discovered cluster type of STANDALONE
+2019-12-26 18:48:29.069  WARN 15021 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2019-12-26 18:48:29.187  INFO 15021 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2019-12-26 18:48:29.196  WARN 15021 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-12-26 18:48:29.196  INFO 15021 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-26 18:48:29.218  INFO 15021 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-26 18:48:30.327  INFO 15021 --- [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2019-12-26 18:48:31.349  INFO 15021 --- [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2019-12-26 18:48:31.404  INFO 15021 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-12-26 18:48:31.406  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-12-26 18:48:31.406  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-12-26 18:48:31.407  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-12-26 18:48:31.407  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-12-26 18:48:31.407  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-12-26 18:48:31.443  INFO 15021 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-12-26 18:48:31.443  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2019-12-26 18:48:31.443  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2019-12-26 18:48:31.443  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2019-12-26 18:48:31.443  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2019-12-26 18:48:31.443  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2019-12-26 18:48:31.443  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2019-12-26 18:48:31.443  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2019-12-26 18:48:31.446  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2019-12-26 18:48:31.446  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2019-12-26 18:48:31.447  INFO 15021 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-12-26 18:48:31.448  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1577366311448 with initial instances count: 1
+2019-12-26 18:48:31.449  INFO 15021 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application FUNDOO-NOTE-MODULE with eureka with status UP
+2019-12-26 18:48:31.449  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1577366311449, current=UP, previous=STARTING]
+2019-12-26 18:48:31.450  INFO 15021 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082: registering service...
+2019-12-26 18:48:31.450  INFO 15021 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-12-26 18:48:31.451  INFO 15021 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-12-26 18:48:31.454  INFO 15021 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-12-26 18:48:31.457  INFO 15021 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082 - registration status: 204
+2019-12-26 18:48:31.512  INFO 15021 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2019-12-26 18:48:31.513  INFO 15021 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8082
+2019-12-26 18:48:31.513  INFO 15021 --- [restartedMain] c.b.f.FundooNoteModuleApplication        : Started FundooNoteModuleApplication in 4.995 seconds (JVM running for 1905.999)
+2019-12-26 18:48:31.515  INFO 15021 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-12-26 18:49:21.802  INFO 15021 --- [Thread-73] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application FUNDOO-NOTE-MODULE with eureka with status DOWN
+2019-12-26 18:49:21.803  WARN 15021 --- [Thread-73] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1577366361803, current=DOWN, previous=UP]
+2019-12-26 18:49:21.803  INFO 15021 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082: registering service...
+2019-12-26 18:49:21.812  INFO 15021 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082 - registration status: 204
+2019-12-26 18:49:21.813  INFO 15021 --- [Thread-73] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-26 18:49:21.815  INFO 15021 --- [Thread-73] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2019-12-26 18:49:24.815  INFO 15021 --- [Thread-73] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2019-12-26 18:49:24.820  INFO 15021 --- [Thread-73] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082 - deregister  status: 200
+2019-12-26 18:49:24.830  INFO 15021 --- [Thread-73] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2019-12-26 18:49:26.013  INFO 15021 --- [restartedMain] c.b.f.FundooNoteModuleApplication        : No active profile set, falling back to default profiles: default
+2019-12-26 18:49:26.261  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:49:26.262  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2019-12-26 18:49:26.264  INFO 15021 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotemodule.repository.NoteRepositoryI. If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository, org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository.
+2019-12-26 18:49:26.264  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2ms. Found 0 Elasticsearch repository interfaces.
+2019-12-26 18:49:26.265  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:49:26.265  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2019-12-26 18:49:26.266  INFO 15021 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Elasticsearch - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotemodule.repository.NoteRepositoryI. If you want this repository to be a Reactive Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository.
+2019-12-26 18:49:26.266  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1ms. Found 0 Reactive Elasticsearch repository interfaces.
+2019-12-26 18:49:26.273  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:49:26.273  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2019-12-26 18:49:26.275  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2ms. Found 1 MongoDB repository interfaces.
+2019-12-26 18:49:26.278  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-26 18:49:26.278  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-26 18:49:26.279  INFO 15021 --- [restartedMain] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bridgelabz.fundoonotemodule.repository.NoteRepositoryI. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2019-12-26 18:49:26.279  INFO 15021 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1ms. Found 0 Redis repository interfaces.
+2019-12-26 18:49:26.326  INFO 15021 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=e5af277e-eca6-3f8b-98d8-170efa85de31
+2019-12-26 18:49:26.342  INFO 15021 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$64514df5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-26 18:49:26.371  WARN 15021 --- [restartedMain] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
+2019-12-26 18:49:26.394  INFO 15021 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2019-12-26 18:49:26.394  INFO 15021 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-26 18:49:26.394  INFO 15021 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-26 18:49:26.407  INFO 15021 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-26 18:49:26.407  INFO 15021 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 392 ms
+2019-12-26 18:49:26.450  INFO 15021 --- [restartedMain] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-12-26 18:49:26.451  INFO 15021 --- [restartedMain] org.mongodb.driver.cluster               : Adding discovered server localhost:27017 to client view of cluster
+2019-12-26 18:49:26.452  INFO 15021 --- [cluster-ClusterId{value='5e04b35eb7cea25ff782e0da', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:11, serverValue:14}] to localhost:27017
+2019-12-26 18:49:26.454  INFO 15021 --- [cluster-ClusterId{value='5e04b35eb7cea25ff782e0da', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 6, 3]}, minWireVersion=0, maxWireVersion=6, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=221451}
+2019-12-26 18:49:26.454  INFO 15021 --- [cluster-ClusterId{value='5e04b35eb7cea25ff782e0da', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Discovered cluster type of STANDALONE
+2019-12-26 18:49:26.471  WARN 15021 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2019-12-26 18:49:26.590  INFO 15021 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2019-12-26 18:49:26.610  WARN 15021 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-12-26 18:49:26.611  INFO 15021 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-26 18:49:26.634  INFO 15021 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-26 18:49:27.738  INFO 15021 --- [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2019-12-26 18:49:28.748  INFO 15021 --- [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2019-12-26 18:49:28.810  INFO 15021 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-12-26 18:49:28.812  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-12-26 18:49:28.813  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-12-26 18:49:28.813  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-12-26 18:49:28.813  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-12-26 18:49:28.813  INFO 15021 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-12-26 18:49:28.851  INFO 15021 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-12-26 18:49:28.852  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2019-12-26 18:49:28.852  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2019-12-26 18:49:28.852  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2019-12-26 18:49:28.852  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2019-12-26 18:49:28.852  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2019-12-26 18:49:28.852  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2019-12-26 18:49:28.852  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2019-12-26 18:49:28.862  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2019-12-26 18:49:28.863  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2019-12-26 18:49:28.864  INFO 15021 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-12-26 18:49:28.864  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1577366368864 with initial instances count: 2
+2019-12-26 18:49:28.865  INFO 15021 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application FUNDOO-NOTE-MODULE with eureka with status UP
+2019-12-26 18:49:28.865  INFO 15021 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1577366368865, current=UP, previous=STARTING]
+2019-12-26 18:49:28.866  INFO 15021 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082: registering service...
+2019-12-26 18:49:28.866  INFO 15021 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-12-26 18:49:28.867  INFO 15021 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-12-26 18:49:28.871  INFO 15021 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-12-26 18:49:28.872  INFO 15021 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUNDOO-NOTE-MODULE/localhost:Fundoo-Note-Module:8082 - registration status: 204
+2019-12-26 18:49:28.918  INFO 15021 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2019-12-26 18:49:28.918  INFO 15021 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8082
+2019-12-26 18:49:28.919  INFO 15021 --- [restartedMain] c.b.f.FundooNoteModuleApplication        : Started FundooNoteModuleApplication in 3.987 seconds (JVM running for 1963.404)
+2019-12-26 18:49:28.920  INFO 15021 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

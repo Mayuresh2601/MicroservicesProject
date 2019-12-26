@@ -27,6 +27,8 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
@@ -53,6 +55,8 @@ public class ElasticSearchService implements ElasticSearchServiceI {
 	
 	@Autowired
 	private Environment elasticEnv;
+	
+	private static Logger logger = LoggerFactory.getLogger(ElasticSearchService.class);
 
 
 	/**
@@ -68,6 +72,7 @@ public class ElasticSearchService implements ElasticSearchServiceI {
 		IndexResponse indexresponse = client.index(indexrequest, RequestOptions.DEFAULT);
 
 		ResponseUtility.CustomSucessResponse(elasticEnv.getProperty("SUCCESS_MSG"), note);
+		logger.isWarnEnabled();
 		return ResponseUtility.customSuccessResponse(indexresponse.getResult().name()); 
 	}
 
@@ -81,7 +86,7 @@ public class ElasticSearchService implements ElasticSearchServiceI {
 		GetRequest getRequest = new GetRequest(INDEX, TYPE, id);
 		GetResponse getResponse = client.get(getRequest, RequestOptions.DEFAULT);
 		Map<String, Object> resultMap = getResponse.getSource(); 
-
+		logger.isWarnEnabled();
 		return ResponseUtility.CustomSucessResponse(elasticEnv.getProperty("SUCCESS_MSG"), mapper.convertValue(resultMap, Note.class));
 	}
 
@@ -99,7 +104,7 @@ public class ElasticSearchService implements ElasticSearchServiceI {
 		searchSourceBuilder.query(QueryBuilders.matchAllQuery()); 
 		searchRequest.source(searchSourceBuilder);
 		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
-
+		logger.isWarnEnabled();
 		return getSearchResult(searchResponse);
 	}
 	
@@ -112,7 +117,7 @@ public class ElasticSearchService implements ElasticSearchServiceI {
 
 		DeleteRequest deleteRequest = new DeleteRequest(INDEX, TYPE, id);
 		DeleteResponse deleteResponse = client.delete(deleteRequest, RequestOptions.DEFAULT);
-
+		logger.isWarnEnabled();
 		return new Response(200, elasticEnv.getProperty("DELETE_DOCUMENT"), deleteResponse.getResult().name()); 
 	}
 
@@ -130,8 +135,9 @@ public class ElasticSearchService implements ElasticSearchServiceI {
 		Map<String, Object> map = mapper.convertValue(note, Map.class);
 
 		updateRequest.doc(map);
-
+		
 		UpdateResponse updateResponse = client.update(updateRequest, RequestOptions.DEFAULT); 
+		logger.isWarnEnabled();
 		return new Response(200, elasticEnv.getProperty("UPDATE_DOCUMENT"), updateResponse.getResult().name());
 	}
 
@@ -147,7 +153,7 @@ public class ElasticSearchService implements ElasticSearchServiceI {
 
 		GetResponse getResponse = client.get(request, RequestOptions.DEFAULT);
 		Map<String, Object> map = getResponse.getSource();
-
+		logger.isWarnEnabled();
 		return mapper.convertValue(map, Note.class);
 	}
 
@@ -181,7 +187,7 @@ public class ElasticSearchService implements ElasticSearchServiceI {
 				QueryBuilders.boolQuery().should(QueryBuilders.queryStringQuery(title).lenient(true).field("title")));
 		searchRequest.source(searchSourceBuilder);
 		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
-
+		logger.isWarnEnabled();
 		return new Response(200, elasticEnv.getProperty("NOTE_TITLE"), getSearchResult(searchResponse));
 	}
 	
@@ -198,7 +204,7 @@ public class ElasticSearchService implements ElasticSearchServiceI {
 									.lenient(true).field("description"))); 
 		searchRequest.source(searchSourceBuilder);
 		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT); 																				// request
-
+		logger.isWarnEnabled();
 		return new Response(200, elasticEnv.getProperty("NOTE_DESCRIPTION"), getSearchResult(searchResponse));
 	}
 
